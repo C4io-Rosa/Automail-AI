@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Automail AI</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="container navegation">
+            <div class="logo">
+                Automail AI
+            </div>
+
+            <ul class="menu">
+                <li>
+                    <a href="main.html">Início</a>
+                </li>
+
+                <li>
+                    <a href="instructions.html">Instruções</a>
+                </li>
+
+            </ul>
+        </nav>
+    </header>
+
+    <section class="Welcome">
+
+        <div class="text">
+            <h1>Seja bem vindo ao melhor aplicativo de tratamento de correios eletrônicos, o Automail AI.</h1>
+            <p>Para saber mais sobre nossa aplicação, por favor, consulte a nossa página de instruções.</p>
+        </div>
+    </section>
+
+    <section class="input-section">
+        <h2>Digite o conteúdo do email que deseja classificar:</h2>
+        <textarea id="emailContent" rows="10" placeholder="Classifique seu email!"></textarea>
+
+        <h2>Faça o tratamento do seu Email por meio de um arquivo(.txt ou PDF):</h2>
+        <input type="file" id="fileUpload" accept=".txt,.pdf">
+
+        <button id="submit">Realizar tratamento</button>
+    </section>
+
+    <section class="loading-section">
+        <div id="loading" class="message loading-message hidden">
+            Processando Email. Aguarde...
+        </div>
+
+        <div id="errorMessage" class="message errorMessage hidden">
+        </div>
+
+        <div id="results" class="results hidden"> 
+            <div id="classification">
+                <h3>Classificação do Email:</h3>
+                <p id="classificationResult" class="classification-label"></p>
+            </div>
+
+            <div class="response-section">
+                <h3>Resposta automática sugerida para esse Email:</h3>
+                <textarea id="suggestedResponse" rows="8" readonly></textarea>
+            </div>
+        </div>
+        </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

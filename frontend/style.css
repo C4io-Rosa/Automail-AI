@@ -1,0 +1,430 @@
+@import url("https://fonts.googleapis.com/css2?family=League+Gothic&family=Montserrat:wght@100..900&display=swap");
+
+:root {
+    --primary-cyan: #00BCD4;
+    --dark-cyan: #0097A7;
+    --light-cyan: #B2EBF2;
+    --text-dark: #333;
+    --text-light: #f4f4f4;
+    --background-light: #FFFFFF;
+    --border-color: #DDD;
+    --shadow-color: rgba(0,0,0,0.1);
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+}
+
+* {
+    font-family: "Montserrat", sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--light-cyan);
+    color: var(--text-dark);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding-top: 80px; /* Padding padrão para desktop */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+}
+
+.header {
+    background-color: var(--primary-cyan);
+    box-shadow: 0 2px 5px var(--shadow-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    padding: 15px 0;
+    width: 100%;
+}
+
+.navegation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    min-height: 50px;
+}
+
+.logo {
+    font-family: "League Gothic", sans-serif;
+    font-size: 2em;
+    color: var(--text-light);
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 25px;
+}
+
+.menu li a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+}
+
+.menu li a:hover {
+    color: var(--dark-cyan);
+}
+
+.Welcome, .input-section, .loading-section {
+    background-color: var(--background-light);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    padding: 30px;
+    margin-top: 30px;
+    width: 100%;
+    max-width: 800px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.Welcome h1 {
+    font-size: 2.2em;
+    margin-bottom: 15px;
+}
+
+.Welcome p {
+    font-size: 1.1em;
+    color: var(--text-dark);
+}
+
+.input-section h2, .loading-section h2 {
+    margin-top: 0;
+    text-align: center;
+}
+
+textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1em;
+    resize: vertical;
+    box-shadow: inset 0 1px 3px rgba(0,0,0, 0.05);
+}
+
+input[type="file"] {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding: 5px 0;
+    width: 100%;
+    cursor: pointer;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 12px 25px;
+    font-size: 1.2em;
+    background-color: var(--primary-cyan);
+    color: var(--text-light);
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 5px var(--shadow-color);
+    margin-top: 20px;
+}
+
+button:hover:not(:disabled) {
+    background-color: var(--dark-cyan);
+    transform: translateY(-2px);
+}
+
+button:disabled {
+    background-color: var(--light-cyan);
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+    color: var(--text-dark);
+    opacity: 0.7;
+}
+
+.message {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    display: none !important; 
+}
+
+.message.hidden {
+    display: none !important;
+}
+
+.message:not(.hidden) {
+    display: block !important; 
+}
+
+.loading-message {
+    color: var(--dark-cyan);
+    background-color: var(--light-cyan);
+    border: 1px solid var(--primary-cyan);
+}
+
+.error-message {
+    color: var(--danger-color);
+    background-color: rgba(220, 53, 69, 0.1);
+    border: 1px solid var(--danger-color);
+}
+
+.results {
+    margin-top: 20px;
+    padding: 20px 30px;
+    border-top: 2px solid var(--light-cyan);
+    text-align: left;
+    background-color: var(--background-light);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    width: 100%;
+    max-width: 800px;
+    box-sizing: border-box;
+    display: none !important; 
+    min-height: 0 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+.results.hidden {
+    display: none !important;
+    min-height: 0 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+.results:not(.hidden) {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    min-height: auto; 
+}
+
+.results h3 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: var(--dark-cyan);
+    font-size: 1.5em;
+}
+
+.classification-label {
+    font-size: 1.4em;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.5;
+    min-height: 40px;
+}
+
+.classification-label.Produtivo {
+    color: var(--success-color);
+    background-color: rgba(40, 167, 69, 0.1);
+    border: 1px solid var(--success-color);
+}
+
+.classification-label.Improdutivo {
+    color: var(--danger-color);
+    background-color: rgba(220, 53, 69, 0.1);
+    border: 1px solid var(--danger-color);
+}
+
+.response-section textarea {
+    background-color: var(--light-cyan);
+    border: 1px solid var(--dark-cyan);
+    color: var(--text-dark);
+    height: 200px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    resize: vertical;
+}
+
+.instructions-section {
+    padding: 40px 0;
+    background-color: var(--background-light); 
+    flex-grow: 1;
+}
+
+.instructions-content {
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    max-width: 900px;
+    margin: 30px auto;
+    text-align: left;
+}
+
+.instructions-content h1 {
+    font-size: 2.5em;
+    color: var(--dark-cyan);
+    margin-bottom: 25px;
+    text-align: center;
+    border-bottom: 2px solid var(--light-cyan);
+    padding-bottom: 15px;
+    font-family: "League Gothic", sans-serif;
+    letter-spacing: 1px;
+}
+
+.instructions-content h2 {
+    font-size: 1.8em;
+    color: var(--primary-cyan);
+    margin-top: 30px;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px dashed var(--light-cyan);
+    text-align: center;
+}
+
+.instructions-content h3 {
+    font-size: 1.4em;
+    color: var(--dark-cyan);
+    margin-top: 25px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.instructions-content p {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    line-height: 1.8;
+    color: var(--text-dark);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 160px;
+    }
+
+    .navegation {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0 15px;
+        min-height: auto;
+    }
+
+    .logo {
+        margin-bottom: 10px;
+    }
+
+    .menu {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        background-color: var(--primary-cyan); 
+        position: static;
+        padding: 10px 0;
+        box-shadow: none; 
+    }
+    
+    .menu li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .menu li a {
+        padding: 10px 0;
+        display: block; 
+    }
+
+    .Welcome, .input-section, .loading-section, .results {
+        margin: 20px auto;
+        padding: 20px;
+    }
+
+    .Welcome h1 {
+        font-size: 1.8em;
+    }
+
+    .Welcome p, .instructions-content p {
+        font-size: 1em;
+    }
+
+    textarea {
+        width: 100%;
+    }
+
+    button {
+        font-size: 1.1em;
+        padding: 10px 15px;
+    }
+
+    .instructions-content {
+        padding: 20px 25px;
+        margin: 20px auto;
+    }
+
+    .instructions-content h1 {
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+
+    .instructions-content h2 {
+        font-size: 1.6em;
+        margin-top: 25px;
+    }
+
+    .instructions-content h3 {
+        font-size: 1.2em;
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding-top: 140px;
+    }
+
+    .logo {
+        font-size: 1.6em;
+    }
+    .menu {
+        gap: 8px;
+    }
+    .Welcome, .input-section, .loading-section, .results, .instructions-content {
+        padding: 15px;
+        margin: 15px auto;
+    }
+    .instructions-content h1 {
+        font-size: 1.8em;
+    }
+    .instructions-content h2 {
+        font-size: 1.4em;
+    }
+    .instructions-content h3 {
+        font-size: 1.1em;
+    }
+}
