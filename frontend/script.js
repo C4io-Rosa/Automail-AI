@@ -8,8 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const classificationResult = document.getElementById('classificationResult');
     const suggestedResponse = document.getElementById('suggestedResponse');
 
-    const API_BASE_URL = 'https://automail-ai-3s6l.onrender.com';
-    const apiURL = `${API_BASE_URL}/api/classify`;
+    const API_BASE_URL = 'https://automail-ai-3s6l.onrender.com'; // Sua URL base do backend no Render
+    const apiURL = `${API_BASE_URL}/api/classify`; // O endpoint completo para a classificação
 
     // Garante que todas as mensagens e a seção de resultados comecem escondidas
     hideAllMessagesAndResults(); 
@@ -59,12 +59,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 const formData = new FormData();
                 formData.append('file', selectedFile);
 
-                response = await fetch(API_BASE_URL, {
+                response = await fetch(apiURL, { // <--- CORRIGIDO AQUI: USAR apiURL
                     method: 'POST',
                     body: formData,
                 });
             } else {
-                response = await fetch(API_BASE_URL, {
+                response = await fetch(apiURL, { // <--- CORRIGIDO AQUI: USAR apiURL
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -74,7 +74,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             if (!response.ok) {
-                const errorData = await response.json();
+                // Tenta ler o erro do corpo da resposta, se disponível e JSON
+                const errorText = await response.text();
+                let errorData;
+                try {
+                    errorData = JSON.parse(errorText);
+                } catch (e) {
+                    errorData = { error: errorText || `Erro desconhecido: ${response.status} ${response.statusText}` };
+                }
                 throw new Error(errorData.error || `Erro de rede: ${response.status} ${response.statusText}`);
             }
 
@@ -148,4 +155,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
         resultsSection.classList.add('hidden');
     }
-})
+});
