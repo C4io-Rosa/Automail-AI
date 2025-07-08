@@ -8,7 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const classificationResult = document.getElementById('classificationResult');
     const suggestedResponse = document.getElementById('suggestedResponse');
 
-    const API_BASE_URL = 'http://127.0.0.1:5000/api/classify';
+    const API_BASE_URL = 'https://automail-ai-3s6l.onrender.com';
+    const apiURL = `${API_BASE_URL}/api/classify`;
 
     // Garante que todas as mensagens e a seção de resultados comecem escondidas
     hideAllMessagesAndResults(); 
